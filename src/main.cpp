@@ -2,6 +2,7 @@
 
 // custom header files
 #include "objects/image.h"
+#include "objects/ray.h"
 // for saving pngs
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb/stb_image_write.h"
@@ -38,6 +39,7 @@ int main() {
 
     // do an example test
     for (int y = 0; y < image_height; ++y) {
+        std::clog << "\rProgress: " << ((float)(image_height - y+1)/(float)image_height) * 100. << ' ' << std::flush;
         for (int x = 0; x < image_width; ++x) {
             Image::RGB& pixel = image.at(x, y);
             pixel.r = 255 * x / image_width;
@@ -48,9 +50,6 @@ int main() {
 
     // save
     save_image(image, "output.png");
-
-
-
 
 
     return 0;

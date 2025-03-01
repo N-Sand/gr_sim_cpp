@@ -8,8 +8,8 @@ INCLUDE = -I/usr/include/eigen3 -I/usr/include/stb
 run:
 	./launcher
 
-compile_all: main.o functions.o image.o
-	g++ $(INCLUDE) -std=c++17 -o launcher main.o functions.o image.o $(LIBS)
+compile_all: main.o functions.o image.o ray.o
+	g++ $(INCLUDE) -std=c++17 -o launcher main.o functions.o image.o ray.o $(LIBS)
 
 main.o: main.cpp
 	g++ $(INCLUDE) -std=c++17 $(CFLAGS) main.cpp
@@ -19,6 +19,9 @@ functions.o: utility/functions.cpp
 
 image.o: objects/image.cpp
 	g++ $(INCLUDE) -std=c++17 $(CFLAGS) objects/image.cpp
+
+ray.o: objects/ray.cpp
+	g++ $(INCLUDE) -std=c++17 $(CFLAGS) objects/ray.cpp
 
 clean:
 	rm -rf .vscode/
