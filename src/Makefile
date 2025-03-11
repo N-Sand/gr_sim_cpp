@@ -8,8 +8,8 @@ INCLUDE = -I/usr/include/eigen3 -I/usr/include/stb
 run:
 	./launcher
 
-compile_all: main.o functions.o image.o ray.o
-	g++ $(INCLUDE) -std=c++17 -o launcher main.o functions.o image.o ray.o $(LIBS)
+compile_all: main.o functions.o image.o ray.o hittable.o hittable_array.o sphere.o camera.o
+	g++ $(INCLUDE) -std=c++17 -o launcher main.o functions.o image.o ray.o hittable.o hittable_array.o sphere.o camera.o $(LIBS)
 
 main.o: main.cpp
 	g++ $(INCLUDE) -std=c++17 $(CFLAGS) main.cpp
@@ -22,6 +22,19 @@ image.o: objects/image.cpp
 
 ray.o: objects/ray.cpp
 	g++ $(INCLUDE) -std=c++17 $(CFLAGS) objects/ray.cpp
+
+hittable.o: objects/hittables/hittable.cpp
+	g++ $(INCLUDE) -std=c++17 $(CFLAGS) objects/hittables/hittable.cpp
+
+hittable_array.o: objects/hittables/hittable_array.cpp
+	g++ $(INCLUDE) -std=c++17 $(CFLAGS) objects/hittables/hittable_array.cpp
+
+sphere.o: objects/hittables/sphere.cpp
+	g++ $(INCLUDE) -std=c++17 $(CFLAGS) objects/hittables/sphere.cpp
+
+camera.o: objects/camera.cpp
+	g++ $(INCLUDE) -std=c++17 $(CFLAGS) objects/camera.cpp
+
 
 clean:
 	rm -rf .vscode/

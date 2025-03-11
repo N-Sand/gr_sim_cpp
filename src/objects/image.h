@@ -17,12 +17,12 @@ public:
     RGB& at(int x, int y);
     const RGB& at(int x, int y) const;
 
-    int getWidth() const;
-    int getHeight() const;
+    int get_width() const;
+    int get_height() const;
 
 private:
-    int width, height;
-    std::vector<RGB> pixels;
+    int width_, height_;
+    std::vector<RGB> pixels_;
 };
 
 #endif // IMAGE_H
